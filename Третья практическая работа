@@ -21,3 +21,150 @@ int main()
 	else cout << "Error\n";
 	return 0;
 }
+
+#pragma once
+#include <string>
+#include <iostream>
+
+
+class fasad
+{
+public:
+	fasad();
+	~fasad();
+	std::string* createComputer(std::string parametr); // "Easy", "Medium", "Hard". ���� ��������� ���-�� ������ - �������� �� ������
+private:
+	std::string* pc;
+	void buyMaterinka(int category);
+	void buyMemory(int category);
+	void buyCP(int category);
+	void buyGPU(int category);
+};
+
+#include "fasad.h"
+
+fasad::fasad()
+{
+	pc = new std::string[4];
+}
+
+fasad::~fasad()
+{
+	delete[] pc;
+}
+
+std::string* fasad::createComputer(std::string parametr)
+{
+	if (parametr == "Easy")
+	{
+		//std::cout << "Debug: Easy\n"; // ����� �������, ����������� ����������� ������������� (�������)
+		buyMaterinka(1);
+		buyMemory(1);
+		buyCP(1);
+		buyGPU(1);
+		return pc;
+	}
+	else if (parametr == "Medium")
+	{
+		//std::cout << "Debug: Medium\n";
+		buyMaterinka(2);
+		buyMemory(2);
+		buyCP(2);
+		buyGPU(2);
+		return pc;
+	}
+	else if (parametr == "Hard") 
+	{
+		buyMaterinka(3);
+		buyMemory(3);
+		buyCP(3);
+		buyGPU(3);
+		return pc;
+		//std::cout << "Debug: Hard\n";
+	}
+	else std::cout << "Error\n";
+	// TODO: ��������� ��� ������������� � ������
+}
+
+void fasad::buyMaterinka(int category)
+{
+	if (category == 1) {
+		pc[0] = "Gigabyte GA-E6010N, price: 3590�";
+	}
+	else if (category == 2) {
+		pc[0] = "MSI MAG B560M-A BAZOOKA, price: 11980�";
+	}
+	else
+	{
+		pc[0] = "ASRock X570 Creator, price: 55990�";
+	}
+}
+
+void fasad::buyMemory(int category)
+{
+	if (category == 1) {
+		pc[1] = "Patriot PSD38G16002 DDR3-8GB, price: 2690�";
+	}
+	else if (category == 2) {
+		pc[1] = "Corsair Vengeance RGB Pro DDR4-2x 8Gb, price: 14790�";
+	}
+	else
+	{
+		pc[1] = "Patriot Viper Elite II DDR4-2x 32Gb, price: 28990�";
+	}
+}
+
+void fasad::buyCP(int category)
+{
+	if (category == 1) {
+		pc[2] = "Intel Core i5 9400F, OEM, price: 11990�";
+	}
+	else if (category == 2) {
+		pc[2] = "AMD Ryzen 7 5800X, BOX (��� ������), price: 34990�";
+	}
+	else
+	{
+		pc[2] = "AMD Ryzen Threadripper 3990X, BOX (��� ������), price: 392790�";
+	}
+}
+
+void fasad::buyGPU(int category)
+{
+	if (category == 1) {
+		pc[3] = "MSI GeForce GT 730 4Gb, price: 7340�";
+	}
+	else if (category == 2) {
+		pc[3] = "MSI GeForce RTX 2060 VENTUS 6Gb, price: 69990�";
+	}
+	else
+	{
+		pc[3] = "Palit GeForce RTX 3090 GamingPro 24Gb, price: 139970�";
+	}
+}
+
+#pragma once
+#include <string>
+
+class adapter
+{
+public:
+	adapter() {};
+	~adapter();
+	std::string convert(std::string input);
+};
+
+#include "adapter.h"
+
+adapter::~adapter()
+{
+}
+
+std::string adapter::convert(std::string input)
+{
+    if (input == "1") return "Easy";
+    if (input == "2") return "Medium";
+    if (input == "3") return "Hard";
+    else return "Error";
+}
+
+
